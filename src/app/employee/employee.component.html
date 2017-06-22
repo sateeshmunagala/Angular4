@@ -1,0 +1,82 @@
+<!--The whole content below can be removed with the new code.-->
+<hr>
+<form [formGroup]="userInfo" (ngSubmit)="save(userInfo.value)">
+  <div class="row">
+    <div class="col-lg-2">
+      <div class="input-group">
+        <label>First Name</label>
+        <input type="text" formControlName="firstName" class="form-control" aria-label="Text input with checkbox"/>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <div class="input-group">
+        <label>Last Name</label>
+        <input type="text" class="form-control" formControlName="lastName" aria-label="Text input with radio button"/>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <label>Address</label>
+      <input type="text" formControlName="address" class="form-control"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4">
+        <label>Email</label>
+        <input type="text" formControlName="email" class="form-control"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">
+      <div class="input-group">
+        <label>Phone</label>
+        <input type="text" class="form-control" formControlName="phone" aria-label="Text input with checkbox"/>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <div class="input-group">
+        <label>ZipCode</label>
+        <input type="text" class="form-control"  formControlName="zipcode" aria-label="Text input with radio button"/>
+      </div>
+    </div>
+  </div>
+  <br>
+  <button  type="submit" *ngIf="!updateBtn" class="btn btn-primary">Insert</button>
+
+</form>
+<button  *ngIf="updateBtn"  (click)="update()" class="btn btn-primary">save</button>
+<br>
+<div>
+</div>
+<hr>
+<br>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Email</th>
+    <th>Address</th>
+    <th>Phone</th>
+    <th>Zip</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let info of employees">
+    <td>{{info.firstName}}</td>
+    <td>{{info.lastName}}</td>
+    <td>{{info.email}}</td>
+    <td>{{info.address}}</td>
+    <td>{{info.phone}}</td>
+    <td>{{info.zipcode}}</td>
+    <td>
+      <button class="btn btn-primary" (click)="delete(info.empId )">X</button>
+      <button class="btn btn-primary" (click)="goToForm(info)">Edit</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
